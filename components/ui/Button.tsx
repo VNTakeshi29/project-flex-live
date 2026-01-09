@@ -17,7 +17,8 @@ type Ripple = {
   size: number;
 };
 
-export type ButtonProps = Omit<HTMLMotionProps<"button">, "ref"> & {
+export type ButtonProps = Omit<HTMLMotionProps<"button">, "ref" | "children"> & {
+  children?: React.ReactNode;
   variant?: "primary" | "ghost";
 };
 
