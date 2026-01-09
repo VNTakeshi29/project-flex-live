@@ -6,8 +6,8 @@ import {
   useReducedMotion,
   useSpring,
 } from "framer-motion";
-import { useRef, useState } from "react";
-import type { ComponentPropsWithoutRef } from "react";
+import type { HTMLMotionProps } from "framer-motion";
+import { forwardRef, useCallback, useRef, useState } from "react";
 import { cn } from "@/lib/utils";
 
 type Ripple = {
@@ -17,21 +17,15 @@ type Ripple = {
   size: number;
 };
 
-type ButtonProps = Omit<
-  React.ComponentPropsWithoutRef<"button">,
-  "onDrag" | "onDragStart" | "onDragEnd"
-> & {
+export type ButtonProps = Omit<HTMLMotionProps<"button">, "ref"> & {
   variant?: "primary" | "ghost";
 };
 
-export default function Button({
-  className,
-  children,
-  onClick,
-  variant = "primary",
-  ...props
-}: ButtonProps) {
-  const ref = useRef<HTMLButtonElement | null>(null);
+const Button = forwardRef<HTMLButtonElement, ButtonProps>(function Button(
+  { className, children, onClick, variant = "primary", ...props },
+  forwardedRef
+) {
+  const localRef = useRef<HTMLButtonElement | null>(null);
   const reduceMotion = useReducedMotion();
   const [ripples, setRipples] = useState<Ripple[]>([]);
 
@@ -40,11 +34,23 @@ export default function Button({
   const xSpring = useSpring(x, { stiffness: 200, damping: 14 });
   const ySpring = useSpring(y, { stiffness: 200, damping: 14 });
 
+  const setRefs = useCallback(
+    (node: HTMLButtonElement | null) => {
+      localRef.current = node;
+      if (typeof forwardedRef === "function") {
+        forwardedRef(node);
+      } else if (forwardedRef) {
+        forwardedRef.current = node;
+      }
+    },
+    [forwardedRef]
+  );
+
   const handleMove = (event: React.MouseEvent<HTMLButtonElement>) => {
-    if (reduceMotion || !ref.current) {
+    if (reduceMotion || !localRef.current) {
       return;
     }
-    const rect = ref.current.getBoundingClientRect();
+    const rect = localRef.current.getBoundingClientRect();
     const offsetX = event.clientX - rect.left - rect.width / 2;
     const offsetY = event.clientY - rect.top - rect.height / 2;
     x.set(offsetX * 0.18);
@@ -57,8 +63,8 @@ export default function Button({
   };
 
   const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
-    if (!reduceMotion && ref.current) {
-      const rect = ref.current.getBoundingClientRect();
+    if (!reduceMotion && localRef.current) {
+      const rect = localRef.current.getBoundingClientRect();
       const size = Math.max(rect.width, rect.height) * 1.2;
       const ripple = {
         id: Date.now(),
@@ -76,7 +82,7 @@ export default function Button({
 
   return (
     <motion.button
-      ref={ref}
+      ref={setRefs}
       type="button"
       onMouseMove={handleMove}
       onMouseLeave={handleLeave}
@@ -109,4 +115,8 @@ export default function Button({
       </span>
     </motion.button>
   );
-}
+});
+
+Button.displayName = "Button";
+
+export default Button;
