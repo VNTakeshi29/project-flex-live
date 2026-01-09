@@ -2,6 +2,7 @@
 
 import { motion, useMotionValue, useReducedMotion, useSpring } from "framer-motion";
 import { useRef, useState } from "react";
+import type { ComponentPropsWithoutRef } from "react";
 import { cn } from "@/lib/utils";
 
 type Ripple = {
@@ -11,7 +12,7 @@ type Ripple = {
   size: number;
 };
 
-type ButtonProps = React.ButtonHTMLAttributes<HTMLButtonElement> & {
+type ButtonProps = Omit<ComponentPropsWithoutRef<"button">, "onDrag"> & {
   variant?: "primary" | "ghost";
 };
 
