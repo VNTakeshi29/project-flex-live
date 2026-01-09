@@ -1,6 +1,11 @@
 ﻿"use client";
 
-import { motion, useMotionValue, useReducedMotion, useSpring } from "framer-motion";
+import {
+  motion,
+  useMotionValue,
+  useReducedMotion,
+  useSpring,
+} from "framer-motion";
 import { useRef, useState } from "react";
 import type { ComponentPropsWithoutRef } from "react";
 import { cn } from "@/lib/utils";
@@ -12,7 +17,10 @@ type Ripple = {
   size: number;
 };
 
-type ButtonProps = Omit<ComponentPropsWithoutRef<"button">, "onDrag"> & {
+type ButtonProps = Omit<
+  React.ComponentPropsWithoutRef<"button">,
+  "onDrag" | "onDragStart" | "onDragEnd"
+> & {
   variant?: "primary" | "ghost";
 };
 
@@ -56,7 +64,7 @@ export default function Button({
         id: Date.now(),
         x: event.clientX - rect.left - size / 2,
         y: event.clientY - rect.top - size / 2,
-        size
+        size,
       };
       setRipples((prev) => [...prev, ripple]);
       window.setTimeout(() => {
@@ -90,7 +98,12 @@ export default function Button({
           <span
             key={ripple.id}
             className="absolute rounded-full bg-white/40 opacity-70 animate-ripple"
-            style={{ left: ripple.x, top: ripple.y, width: ripple.size, height: ripple.size }}
+            style={{
+              left: ripple.x,
+              top: ripple.y,
+              width: ripple.size,
+              height: ripple.size,
+            }}
           />
         ))}
       </span>
