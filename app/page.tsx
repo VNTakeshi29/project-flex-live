@@ -1,6 +1,4 @@
-import dynamic from "next/dynamic";
-
-const HomePage = dynamic(() => import("./page.client"), { ssr: false });
+import HomePage from "./page.client";
 
 export default function Page() {
   return <HomePage />;
