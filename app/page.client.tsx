@@ -135,7 +135,7 @@ export default function Home() {
           <div className="absolute inset-0 rounded-3xl border border-[#46f3ff]/10 bg-[#ffffff08] shadow-[0_0_45px_rgba(70,243,255,0.12)] blur-2xl" />
           <div className="relative h-full overflow-hidden rounded-[2rem] border border-[#46f3ff]/20 bg-gradient-to-br from-[#111827] via-[#0f172a] to-[#090b12] shadow-soft">
             <img
-              src="/hero-anime.jpg"
+              src="/avatar.jpg"
               alt="Profile avatar"
               className="object-cover w-full h-full"
             />
