@@ -117,9 +117,9 @@ export default function Home() {
         {/* Avatar frame */}
         <div className="w-64 h-64 md:w-80 md:h-80 relative group">
           <div className="w-full h-full overflow-hidden border-4 border-[#00f0ff] rounded-2xl shadow-[0_0_30px_rgba(0,240,255,0.3)] rotate-3 group-hover:rotate-0 group-hover:scale-105 group-hover:border-[#ff007f] group-hover:shadow-[0_0_35px_#ff007f] transition-all duration-500">
-            <img 
-              src="https://i.pinimg.com/7360s/79/f0/54/79f0547be0b7f8c14d9b6ccdd66cfb74.jpg" 
-              alt="Profile avatar" 
+              <img
+              src="/hero-anime.jpg"
+              alt="Profile avatar"
               className="object-cover w-full h-full"
             />
           </div>
