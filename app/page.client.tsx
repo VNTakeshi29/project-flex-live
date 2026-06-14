@@ -162,13 +162,19 @@ export default function Home() {
       {/* CONTACT SECTION */}
       <footer id="contact" className="text-center py-16 px-6 bg-[#090a0f] border-t border-[#00f0ff]/10">
         <h2 className="font-mono text-2xl text-[#ff007f] mb-4">{"// CONTACT"}</h2>
-        <p className="text-[#a0aec0] max-w-md mx-auto mb-8">Use the links below to get in touch or follow updates.</p>
-        <div className="flex justify-center gap-6 flex-wrap">
-          <a href="#" className="px-5 py-2.5 font-bold border border-neutral-800 rounded-md hover:border-[#00f0ff] hover:text-[#00f0ff] hover:shadow-[0_0_15px_rgba(0,240,255,0.2)] transition">Facebook</a>
-          <a href="#" className="px-5 py-2.5 font-bold border border-neutral-800 rounded-md hover:border-[#00f0ff] hover:text-[#00f0ff] hover:shadow-[0_0_15px_rgba(0,240,255,0.2)] transition">Github</a>
-          <a href="https://discord.gg/bhjsq3bzcM" target="_blank" rel="noopener noreferrer" className="px-5 py-2.5 font-bold border border-neutral-800 rounded-md hover:border-[#00f0ff] hover:text-[#00f0ff] hover:shadow-[0_0_15px_rgba(0,240,255,0.2)] transition">Discord</a>
+        <p className="text-[#a0aec0] max-w-md mx-auto mb-8">Contact me on Discord or GitHub for project inquiries and collaboration.</p>
+        <div className="flex flex-col items-center gap-4 sm:flex-row sm:justify-center">
+          <a href="https://discord.com/users/645512630244605983" target="_blank" rel="noopener noreferrer" className="px-5 py-2.5 font-bold border border-neutral-800 rounded-md hover:border-[#00f0ff] hover:text-[#00f0ff] hover:shadow-[0_0_15px_rgba(0,240,255,0.2)] transition">
+            Discord: vntakeshii
+          </a>
+          <a href="http://github.com/VNTakeshi29/" target="_blank" rel="noopener noreferrer" className="px-5 py-2.5 font-bold border border-neutral-800 rounded-md hover:border-[#00f0ff] hover:text-[#00f0ff] hover:shadow-[0_0_15px_rgba(0,240,255,0.2)] transition">
+            GitHub
+          </a>
+          <a href="https://guns.lol/vntakeshi" target="_blank" rel="noopener noreferrer" className="px-5 py-2.5 font-bold border border-neutral-800 rounded-md hover:border-[#00f0ff] hover:text-[#00f0ff] hover:shadow-[0_0_15px_rgba(0,240,255,0.2)] transition">
+            guns.lol/vntakeshi
+          </a>
         </div>
-        <p className="text-xs text-neutral-600 mt-16">© 2026 Takeshi. All projects and ideas are built by hand.</p>
+        <p className="text-xs text-neutral-600 mt-16">© 2026 Takeshi. All work is built manually with code.</p>
       </footer>
     </div>
   );
