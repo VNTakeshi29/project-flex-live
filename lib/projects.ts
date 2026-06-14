@@ -43,6 +43,30 @@ export const projects: Project[] = [
     ]
   },
   {
+    id: "dtpuu-mod",
+    title: "DTPuu Mod – YouTuber Support",
+    role: "Mod",
+    status: "active",
+    badges: ["Active", "YouTube", "Mod"],
+    description:
+      "Mod support for DTPuu's community, maintaining order and assisting members around content and server behavior.",
+    links: [
+      { label: "YouTube", href: "https://www.youtube.com/@DTPuu" }
+    ]
+  },
+  {
+    id: "personal-server",
+    title: "Takeshi Personal Discord Server",
+    role: "Owner",
+    status: "active",
+    badges: ["Active", "Discord", "Community"],
+    description:
+      "Personal Discord server for project coordination, collaboration, and private community management.",
+    links: [
+      { label: "Discord", href: "https://discord.com/users/645512630244605983" }
+    ]
+  },
+  {
     id: "ngoc-rong",
     title: "Ngọc Rồng Online Servers",
     status: "archived",
