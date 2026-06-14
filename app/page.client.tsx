@@ -44,23 +44,33 @@ export default function Home() {
 
     if (bgmActive) {
       audio.pause();
+      setBgmActive(false);
     } else {
       audio.volume = 0.3;
-      audio.play().catch(() => {
+      audio.play().then(() => {
+        setBgmActive(true);
+      }).catch(() => {
         console.warn("Audio play blocked by browser");
       });
     }
-
-    setBgmActive((current) => !current);
   };
 
   useEffect(() => {
+    const audio = audioRef.current;
+    if (!audio) return;
+
+    audio.volume = 0.3;
+    audio.play().then(() => {
+      setBgmActive(true);
+    }).catch(() => {
+      // Browser blocked autoplay, user can still toggle manually.
+    });
+
     return () => {
       if (intervalRef.current !== null) {
         window.clearInterval(intervalRef.current);
       }
-      const audio = audioRef.current;
-      audio?.pause();
+      audio.pause();
     };
   }, []);
 
@@ -72,7 +82,7 @@ export default function Home() {
       <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top,_rgba(70,243,255,0.08),transparent_30%),radial-gradient(circle_at_bottom_left,_rgba(255,79,216,0.05),transparent_25%)] opacity-70" />
 
       {/* Background BGM Track */}
-      <audio ref={audioRef} loop src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" />
+      <audio ref={audioRef} loop src="/music.mp3" />
 
       {/* NAVBAR */}
       <nav className="sticky top-0 z-50 flex items-center justify-between gap-4 px-6 py-4 border-b border-white/10 bg-[#090b12]/80 backdrop-blur-xl shadow-soft md:px-16">
