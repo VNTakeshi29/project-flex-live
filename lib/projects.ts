@@ -37,7 +37,7 @@ export const projects: Project[] = [
         description: "Admin and moderation for Play Together tools community on YouTube and Discord.",
         links: [
           { label: "YouTube", href: "https://www.youtube.com/@NightOwlTGT" },
-          { label: "Discord", href: "https://discord.gg/Svz59wgfhj" }
+          { label: "Discord", href: "https://discord.gg/YzZRwPpF59" }
         ]
       },
       {
@@ -45,20 +45,19 @@ export const projects: Project[] = [
         description: "Community moderator for Bis’ streamer Discord server and event support.",
         links: [
           { label: "YouTube", href: "https://www.youtube.com/@Bis1001" },
-          { label: "Discord", href: "https://discord.gg/Svz59wgfhj" }
+          { label: "Discord", href: "https://discord.gg/rfZpUHSeXw" }
         ]
       },
       {
         label: "DTPuu",
         description: "Moderator support for DTPuu’s YouTube audience and Discord engagement.",
         links: [
-          { label: "YouTube", href: "https://www.youtube.com/@DTPuu" }
+          { label: "YouTube", href: "https://www.youtube.com/@DTPuu" },
+          { label: "Discord", href: "https://discord.gg/xYCBHtPCyp" }
         ]
       }
     ],
-    links: [
-      { label: "Community overview", href: "https://discord.gg/Svz59wgfhj" }
-    ]
+    links: []
   },
   {
     id: "legacy-projects",
@@ -99,8 +98,6 @@ export const projects: Project[] = [
         ]
       }
     ],
-    links: [
-      { label: "Archive overview", href: "https://github.com/VNTakeshi29/project-flex-live" }
-    ]
+    links: []
   }
 ];
