@@ -1,5 +1,6 @@
 "use client";
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState } from "react";
+import { projects } from "@/lib/projects";
 
 export default function Home() {
   const [bgmActive, setBgmActive] = useState(false);
@@ -7,7 +8,7 @@ export default function Home() {
   const intervalRef = useRef<number | null>(null);
   const audioRef = useRef<HTMLAudioElement | null>(null);
 
-  // Easter Egg: Matrix digital rain effect on Logo Hover
+  // Logo hover effect
   const handleLogoHover = () => {
     if (intervalRef.current !== null) return;
 
@@ -98,27 +99,27 @@ export default function Home() {
             TAKESHI
           </h1>
           <p className="text-xl md:text-2xl mb-4 font-light">
-            An Otaku Software Engineer <span className="text-[#ff007f] font-bold [text-shadow:0_0_10px_#ff007f]">Wibu</span> who turns code into waifus.
+            Software engineer building tools, communities, and simple web experiences.
           </p>
           <p className="text-[#a0aec0] leading-relaxed mb-8">
-            "As long as you don't log out, every dream can be deployed." - <span className="italic text-xs text-[#00f0ff]">System Maintenance Mantra</span>
+            "I enjoy making things that work well and feel easy to use." - <span className="italic text-xs text-[#00f0ff]">Personal mission</span>
           </p>
           <div className="flex gap-4">
             <a href="#projects" className="px-6 py-3 font-bold text-white transition bg-[#ff007f] rounded shadow-[0_0_15px_rgba(255,0,127,0.4)] hover:shadow-[0_0_25px_#ff007f] hover:-translate-y-0.5">
-              Explore Vault
+              View Projects
             </a>
             <a href="#contact" className="px-6 py-3 font-bold transition border rounded border-[#00f0ff] text-[#00f0ff] hover:bg-[#00f0ff]/10 hover:-translate-y-0.5">
-              Initiate Link
+              Contact Me
             </a>
           </div>
         </div>
         
-        {/* Cyberpunk Anime Avatar Frame */}
+        {/* Avatar frame */}
         <div className="w-64 h-64 md:w-80 md:h-80 relative group">
           <div className="w-full h-full overflow-hidden border-4 border-[#00f0ff] rounded-2xl shadow-[0_0_30px_rgba(0,240,255,0.3)] rotate-3 group-hover:rotate-0 group-hover:scale-105 group-hover:border-[#ff007f] group-hover:shadow-[0_0_35px_#ff007f] transition-all duration-500">
             <img 
               src="https://i.pinimg.com/7360s/79/f0/54/79f0547be0b7f8c14d9b6ccdd66cfb74.jpg" 
-              alt="Anime Avatar" 
+              alt="Profile avatar" 
               className="object-cover w-full h-full"
             />
           </div>
@@ -128,80 +129,46 @@ export default function Home() {
       {/* PROJECTS SECTION */}
       <section id="projects" className="px-6 py-20 md:px-16">
         <h2 className="font-mono text-2xl font-bold mb-12 text-[#00f0ff]">
-          {"// FEATURED PROJECTS & ACHIEVEMENTS"}
+          {"// SELECTED PROJECTS"}
         </h2>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-          
-          {/* Project 1: DTPuu Moderator */}
-          <div className="relative p-8 border border-white/5 bg-[#161925] rounded-xl hover:-translate-y-2 hover:border-[#ff007f] hover:shadow-[0_10px_20px_rgba(255,0,127,0.1)] transition-all group">
-            <span className="absolute top-6 right-6 text-xs font-bold text-[#ff007f] bg-[#ff007f]/10 px-2.5 py-1 rounded">
-              Management
-            </span>
-            <h3 className="text-xl font-bold mt-2 text-white group-hover:text-[#ff007f] transition">Discord Moderator @DTPuu</h3>
-            <p className="text-[#a0aec0] text-sm mt-3 leading-relaxed">
-              Moderating and managing the official Discord Server for YouTuber <strong>DTPuu</strong>[cite: 1]. Responsible for server security, configuring automation bots, and maintaining a non-toxic, highly engaging workspace for community members.
-            </p>
-            <div className="flex gap-4 mt-6 text-xs font-bold">
-              <a href="https://www.youtube.com/@DTPuu" target="_blank" rel="noopener noreferrer" className="text-[#00f0ff] hover:underline">📺 YouTube Channel</a>
-              <a href="https://discord.gg/mM5tJ3u9cQ" target="_blank" rel="noopener noreferrer" className="text-[#00f0ff] hover:underline">💬 Join Discord</a>
+          {projects.map((project) => (
+            <div key={project.id} className="relative p-8 border border-white/5 bg-[#161925] rounded-xl hover:-translate-y-2 hover:border-[#ff007f] hover:shadow-[0_10px_20px_rgba(255,0,127,0.1)] transition-all group">
+              <span className="absolute top-6 right-6 text-xs font-bold text-[#ff007f] bg-[#ff007f]/10 px-2.5 py-1 rounded">
+                {project.status === "active" ? "Active" : "Archived"}
+              </span>
+              <h3 className="text-xl font-bold mt-2 text-white group-hover:text-[#ff007f] transition">{project.title}</h3>
+              {project.role ? (
+                <p className="mt-1 text-sm text-[#a0aec0]">Role: {project.role}</p>
+              ) : null}
+              <p className="text-[#a0aec0] text-sm mt-3 leading-relaxed">{project.description}</p>
+              <div className="mt-6 space-x-3 text-xs uppercase tracking-[0.2em] text-[#00f0ff]">
+                {project.badges.map((badge) => (
+                  <span key={badge}>{badge}</span>
+                ))}
+              </div>
+              <div className="mt-6 flex flex-wrap gap-3 text-xs uppercase tracking-[0.2em] text-[#00f0ff]">
+                {project.links.map((link) => (
+                  <a key={link.href} href={link.href} target="_blank" rel="noopener noreferrer" className="transition hover:text-white">
+                    {link.label}
+                  </a>
+                ))}
+              </div>
             </div>
-          </div>
-
-          {/* Project 2: Owner Cộng Đồng Nhỏ */}
-          <div className="relative p-8 border border-white/5 bg-[#161925] rounded-xl hover:-translate-y-2 hover:border-[#ff007f] hover:shadow-[0_10px_20px_rgba(255,0,127,0.1)] transition-all group">
-            <span className="absolute top-6 right-6 text-xs font-bold text-[#ff007f] bg-[#ff007f]/10 px-2.5 py-1 rounded">
-              Founder
-            </span>
-            <h3 className="text-xl font-bold mt-2 text-white group-hover:text-[#ff007f] transition">Owner @ Cộng Đồng Nhỏ Tự Xây</h3>
-            <p className="text-[#a0aec0] text-sm mt-3 leading-relaxed">
-              Founded and architected a tight-knit standalone digital community server from scratch[cite: 1]. Designed server channels infrastructure, deployed permission trees, and implemented customized engagement policies.
-            </p>
-            <div className="flex gap-4 mt-6 text-xs font-bold">
-              <a href="https://discord.gg/bhjsq3bzcM" target="_blank" rel="noopener noreferrer" className="text-[#00f0ff] hover:underline">💬 Explore Server</a>
-            </div>
-          </div>
-
-          {/* Project 3: Waifu Gacha */}
-          <div className="relative p-8 border border-white/5 bg-[#161925] rounded-xl hover:-translate-y-2 hover:border-[#ff007f] hover:shadow-[0_10px_20px_rgba(255,0,127,0.1)] transition-all group">
-            <span className="absolute top-6 right-6 text-xs font-bold text-[#ff007f] bg-[#ff007f]/10 px-2.5 py-1 rounded">
-              Web App
-            </span>
-            <h3 className="text-xl font-bold mt-2 text-white group-hover:text-[#ff007f] transition">Waifu Gacha Simulator</h3>
-            <p className="text-[#a0aec0] text-sm mt-3 leading-relaxed">
-              A precise simulation of anime drop-rate banners utilizing pseudorandom distribution algorithms, featuring a solid 99% pull failure rate to closely mimic raw gacha despair.
-            </p>
-            <div className="mt-6 space-x-3 text-xs text-[#00f0ff]">
-              <span>#React</span> <span>#NodeJS</span> <span>#Tailwind</span>
-            </div>
-          </div>
-
-          {/* Project 4: Anti-Spammer */}
-          <div className="relative p-8 border border-white/5 bg-[#161925] rounded-xl hover:-translate-y-2 hover:border-[#ff007f] hover:shadow-[0_10px_20px_rgba(255,0,127,0.1)] transition-all group">
-            <span className="absolute top-6 right-6 text-xs font-bold text-[#ff007f] bg-[#ff007f]/10 px-2.5 py-1 rounded">
-              Extension
-            </span>
-            <h3 className="text-xl font-bold mt-2 text-white group-hover:text-[#ff007f] transition">Anti-Spammer Jutsu</h3>
-            <p className="text-[#a0aec0] text-sm mt-3 leading-relaxed">
-              A lightweight Google Chrome extension built to auto-detect and shroud customized toxic phrases across dynamic social boards using signature shadow-clone fade transitions.
-            </p>
-            <div className="mt-6 space-x-3 text-xs text-[#00f0ff]">
-              <span>#JavaScript</span> <span>#CSS_Glitch</span>
-            </div>
-          </div>
-
+          ))}
         </div>
       </section>
 
       {/* CONTACT SECTION */}
       <footer id="contact" className="text-center py-16 px-6 bg-[#090a0f] border-t border-[#00f0ff]/10">
-        <h2 className="font-mono text-2xl text-[#ff007f] mb-4">{"// TRANSMIT COORD"}</h2>
-        <p className="text-[#a0aec0] max-w-md mx-auto mb-8">Click the hyper-links below to ping my network hub directly across the meta-sphere.</p>
+        <h2 className="font-mono text-2xl text-[#ff007f] mb-4">{"// CONTACT"}</h2>
+        <p className="text-[#a0aec0] max-w-md mx-auto mb-8">Use the links below to get in touch or follow updates.</p>
         <div className="flex justify-center gap-6 flex-wrap">
           <a href="#" className="px-5 py-2.5 font-bold border border-neutral-800 rounded-md hover:border-[#00f0ff] hover:text-[#00f0ff] hover:shadow-[0_0_15px_rgba(0,240,255,0.2)] transition">Facebook</a>
           <a href="#" className="px-5 py-2.5 font-bold border border-neutral-800 rounded-md hover:border-[#00f0ff] hover:text-[#00f0ff] hover:shadow-[0_0_15px_rgba(0,240,255,0.2)] transition">Github</a>
           <a href="https://discord.gg/bhjsq3bzcM" target="_blank" rel="noopener noreferrer" className="px-5 py-2.5 font-bold border border-neutral-800 rounded-md hover:border-[#00f0ff] hover:text-[#00f0ff] hover:shadow-[0_0_15px_rgba(0,240,255,0.2)] transition">Discord</a>
         </div>
-        <p className="text-xs text-neutral-600 mt-16">© 2026 Takeshi. Wired with 💖 and Otaku core energy.</p>
+        <p className="text-xs text-neutral-600 mt-16">© 2026 Takeshi. All projects and ideas are built by hand.</p>
       </footer>
     </div>
   );
