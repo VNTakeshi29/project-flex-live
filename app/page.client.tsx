@@ -102,7 +102,7 @@ export default function Home() {
             Software engineer building tools, communities, and simple web experiences.
           </p>
           <p className="text-[#a0aec0] leading-relaxed mb-8">
-            "I enjoy making things that work well and feel easy to use." - <span className="italic text-xs text-[#00f0ff]">Personal mission</span>
+            "Spring will be here soon. Spring, the season I met you, is coming. A Spring without you…is coming." - <span className="italic text-xs text-[#00f0ff]">Kousei Arima</span>
           </p>
           <div className="flex gap-4">
             <a href="#projects" className="px-6 py-3 font-bold text-white transition bg-[#ff007f] rounded shadow-[0_0_15px_rgba(255,0,127,0.4)] hover:shadow-[0_0_25px_#ff007f] hover:-translate-y-0.5">
