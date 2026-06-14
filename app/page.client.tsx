@@ -5,6 +5,7 @@ import { projects } from "@/lib/projects";
 export default function Home() {
   const [bgmActive, setBgmActive] = useState(false);
   const [logoText, setLogoText] = useState("TAKESHI.exe");
+  const [openProjectId, setOpenProjectId] = useState<string | null>(null);
   const intervalRef = useRef<number | null>(null);
   const audioRef = useRef<HTMLAudioElement | null>(null);
 
@@ -128,34 +129,71 @@ export default function Home() {
 
       {/* PROJECTS SECTION */}
       <section id="projects" className="px-6 py-20 md:px-16">
-        <h2 className="font-mono text-2xl font-bold mb-12 text-[#00f0ff]">
-          {"// SELECTED PROJECTS"}
-        </h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-          {projects.map((project) => (
-            <div key={project.id} className="relative p-8 border border-white/5 bg-[#161925] rounded-xl hover:-translate-y-2 hover:border-[#ff007f] hover:shadow-[0_10px_20px_rgba(255,0,127,0.1)] transition-all group">
-              <span className="absolute top-6 right-6 text-xs font-bold text-[#ff007f] bg-[#ff007f]/10 px-2.5 py-1 rounded">
-                {project.status === "active" ? "Active" : "Archived"}
-              </span>
-              <h3 className="text-xl font-bold mt-2 text-white group-hover:text-[#ff007f] transition">{project.title}</h3>
-              {project.role ? (
-                <p className="mt-1 text-sm text-[#a0aec0]">Role: {project.role}</p>
-              ) : null}
-              <p className="text-[#a0aec0] text-sm mt-3 leading-relaxed">{project.description}</p>
-              <div className="mt-6 space-x-3 text-xs uppercase tracking-[0.2em] text-[#00f0ff]">
-                {project.badges.map((badge) => (
-                  <span key={badge}>{badge}</span>
-                ))}
+        <div className="flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
+          <div>
+            <h2 className="font-mono text-2xl font-bold text-[#00f0ff]">{"// SELECTED PROJECTS"}</h2>
+            <p className="mt-3 max-w-2xl text-sm text-[#a0aec0]">
+              Click a project to expand details. Active work shows live evidence links, archived work is grouped into one reference card.
+            </p>
+          </div>
+        </div>
+
+        <div className="mt-8 space-y-4">
+          {projects.map((project) => {
+            const isOpen = openProjectId === project.id;
+
+            return (
+              <div
+                key={project.id}
+                className="overflow-hidden rounded-3xl border border-white/10 bg-[#0f172a] shadow-[0_15px_50px_-30px_rgba(0,0,0,0.6)]"
+              >
+                <button
+                  type="button"
+                  onClick={() => setOpenProjectId(isOpen ? null : project.id)}
+                  className="flex w-full items-center justify-between gap-4 px-6 py-5 text-left transition-all hover:bg-white/5"
+                >
+                  <div>
+                    <div className="flex flex-wrap items-center gap-3">
+                      <h3 className="text-xl font-semibold text-white">{project.title}</h3>
+                      <span
+                        className={`rounded-full px-3 py-1 text-xs font-semibold uppercase tracking-[0.2em] ${
+                          project.status === "active"
+                            ? "bg-[#00f0ff]/15 text-[#00f0ff] border border-[#00f0ff]/20"
+                            : "bg-white/10 text-slate-200 border border-white/10"
+                        }`}
+                      >
+                        {project.status === "active" ? "Active" : "Archived"}
+                      </span>
+                    </div>
+                    {project.role ? (
+                      <p className="mt-2 text-sm text-[#a0aec0]">{project.role}</p>
+                    ) : null}
+                  </div>
+                  <span className="text-3xl font-bold text-[#00f0ff]">{isOpen ? "−" : "+"}</span>
+                </button>
+                <div
+                  className={`overflow-hidden px-6 transition-all duration-300 ${
+                    isOpen ? "max-h-[800px] py-5 opacity-100" : "max-h-0 py-0 opacity-0"
+                  }`}
+                >
+                  <p className="text-sm leading-relaxed text-[#a0aec0]">{project.description}</p>
+                  <div className="mt-4 flex flex-wrap gap-3">
+                    {project.links.map((link) => (
+                      <a
+                        key={link.href}
+                        href={link.href}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="rounded-2xl border border-[#ffffff1a] bg-white/5 px-4 py-2 text-sm text-[#cbd5e1] transition hover:bg-[#121827] hover:text-white"
+                      >
+                        {link.label}
+                      </a>
+                    ))}
+                  </div>
+                </div>
               </div>
-              <div className="mt-6 flex flex-wrap gap-3 text-xs uppercase tracking-[0.2em] text-[#00f0ff]">
-                {project.links.map((link) => (
-                  <a key={link.href} href={link.href} target="_blank" rel="noopener noreferrer" className="transition hover:text-white">
-                    {link.label}
-                  </a>
-                ))}
-              </div>
-            </div>
-          ))}
+            );
+          })}
         </div>
       </section>
 

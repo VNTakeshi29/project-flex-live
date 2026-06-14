@@ -55,27 +55,17 @@ export const projects: Project[] = [
     ]
   },
   {
-    id: "legacy-gaming",
-    title: "Legacy Gaming Servers",
+    id: "legacy-projects",
+    title: "Legacy / Archived Projects",
     status: "archived",
     badges: ["Archived"],
     description:
-      "Archived Dragon Ball and Minecraft private servers preserved as past work.",
+      "All inactive past projects grouped together for reference, including archived servers and services.",
     links: [
       { label: "Ngọc Rồng", href: "https://ngocrongzin.com" },
-      { label: "Minecraft", href: "https://seacraft.vn" }
-    ]
-  },
-  {
-    id: "legacy-trading",
-    title: "Legacy Trading Projects",
-    status: "archived",
-    badges: ["Archived"],
-    description:
-      "Old cheat/hack marketplace and trading work that is now archived.",
-    links: [
+      { label: "Minecraft", href: "https://seacraft.vn" },
       { label: "muahack.com", href: "https://muahack.com" },
-      { label: "Discord", href: "https://discord.gg/BW9qD66m5p" }
+      { label: "Mars Services", href: "https://discord.gg/BW9qD66m5p" }
     ]
   }
 ];
