@@ -27,3 +27,10 @@ npm run start
 - Required assets:
   - `public/music.mp3` (optional `public/music.ogg`)
   - `public/rain.mp4`
+
+## Quality checks
+
+```bash
+npm run lint
+npm run build
+```
