@@ -17,91 +17,65 @@ export type Project = {
 
 export const projects: Project[] = [
   {
-    id: "nightowltgt",
-    title: "NightOwlTGT – Play Together Tools Community",
-    role: "Admin",
+    id: "discord-communities",
+    title: "Discord Communities",
+    role: "Community Ops",
     status: "active",
-    badges: ["Active", "Community", "Discord"],
+    badges: ["Active", "Discord", "YouTube"],
     description:
-      "Admin role for a Discord community related to Play Together tools/hacks. Includes content + support.",
+      "Moderation and support for NightOwlTGT and Bis communities, plus active Discord engagement.",
     links: [
-      { label: "YouTube", href: "https://www.youtube.com/@NightOwlTGT" },
-      { label: "Discord", href: "https://discord.gg/Svz59wgfhj" }
-    ]
-  },
-  {
-    id: "bis",
-    title: "Bis – Streamer Community Server",
-    role: "Moderator",
-    status: "active",
-    badges: ["Active", "Community", "Discord"],
-    description:
-      "Moderator role for Bis (female streamer)’s Discord server. Keeps chats clean and vibes friendly.",
-    links: [
-      { label: "YouTube", href: "https://www.youtube.com/@Bis1001" },
+      { label: "NightOwlTGT", href: "https://www.youtube.com/@NightOwlTGT" },
+      { label: "Bis", href: "https://www.youtube.com/@Bis1001" },
       { label: "Discord", href: "https://discord.gg/Svz59wgfhj" }
     ]
   },
   {
     id: "dtpuu-mod",
-    title: "DTPuu Mod – YouTuber Support",
-    role: "Mod",
+    title: "DTPuu Mod Support",
+    role: "Moderator",
     status: "active",
     badges: ["Active", "YouTube", "Mod"],
     description:
-      "Mod support for DTPuu's community, maintaining order and assisting members around content and server behavior.",
+      "Active moderation support for DTPuu’s YouTube community and audience engagement.",
     links: [
       { label: "YouTube", href: "https://www.youtube.com/@DTPuu" }
     ]
   },
   {
     id: "personal-server",
-    title: "Takeshi Personal Discord Server",
+    title: "Takeshi Discord Hub",
     role: "Owner",
     status: "active",
-    badges: ["Active", "Discord", "Community"],
+    badges: ["Active", "Discord"],
     description:
-      "Personal Discord server for project coordination, collaboration, and private community management.",
+      "Private server for collaboration, project coordination, and community support.",
     links: [
       { label: "Discord", href: "https://discord.com/users/645512630244605983" }
     ]
   },
   {
-    id: "ngoc-rong",
-    title: "Ngọc Rồng Online Servers",
+    id: "legacy-gaming",
+    title: "Legacy Gaming Servers",
     status: "archived",
     badges: ["Archived"],
-    description: "Two Dragon Ball themed private servers (archived).",
+    description:
+      "Archived Dragon Ball and Minecraft private servers preserved as past work.",
     links: [
-      { label: "ngocrongzin.com", href: "https://ngocrongzin.com" },
-      { label: "ngocrongzee.com", href: "https://ngocrongzee.com" }
+      { label: "Ngọc Rồng", href: "https://ngocrongzin.com" },
+      { label: "Minecraft", href: "https://seacraft.vn" }
     ]
   },
   {
-    id: "minecraft",
-    title: "Minecraft Servers",
+    id: "legacy-trading",
+    title: "Legacy Trading Projects",
     status: "archived",
     badges: ["Archived"],
-    description: "Two Minecraft servers (archived).",
+    description:
+      "Old cheat/hack marketplace and trading work that is now archived.",
     links: [
-      { label: "seacraft.vn", href: "https://seacraft.vn" },
-      { label: "mineocd.com", href: "https://mineocd.com" }
+      { label: "muahack.com", href: "https://muahack.com" },
+      { label: "Discord", href: "https://discord.gg/BW9qD66m5p" }
     ]
-  },
-  {
-    id: "muahack",
-    title: "Cheat/Hack Marketplace – muahack.com",
-    status: "archived",
-    badges: ["Archived"],
-    description: "A cheat/hack marketplace website (archived; site is offline).",
-    links: [{ label: "muahack.com", href: "https://muahack.com" }]
-  },
-  {
-    id: "mars-services",
-    title: "Mars Services – Cheat/Hack Trading",
-    status: "archived",
-    badges: ["Archived"],
-    description: "Cheat/hack trading project under “Mars Services” (archived).",
-    links: [{ label: "Discord", href: "https://discord.gg/BW9qD66m5p" }]
   }
 ];
