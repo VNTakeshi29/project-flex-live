@@ -65,22 +65,27 @@ export default function Home() {
   }, []);
 
   return (
-    <div className="min-h-screen bg-[#0d0e15] text-[#e2e8f0] font-sans antialiased selection:bg-[#ff007f] selection:text-white">
+    <div className="min-h-screen relative overflow-hidden bg-[#070912] text-[#dce4f1] font-sans antialiased selection:bg-[#ff4fd8] selection:text-white">
+      <div className="pointer-events-none absolute left-[-10%] top-16 h-96 w-96 rounded-full bg-[#46f3ff]/15 blur-3xl" />
+      <div className="pointer-events-none absolute right-0 top-1/3 h-80 w-80 rounded-full bg-[#ff4fd8]/12 blur-3xl" />
+      <div className="pointer-events-none absolute inset-x-16 bottom-0 h-96 rounded-full bg-[#8b5cff]/10 blur-3xl" />
+      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top,_rgba(70,243,255,0.08),transparent_30%),radial-gradient(circle_at_bottom_left,_rgba(255,79,216,0.05),transparent_25%)] opacity-70" />
+
       {/* Background BGM Track */}
       <audio ref={audioRef} loop src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" />
 
       {/* NAVBAR */}
-      <nav className="sticky top-0 z-50 flex items-center justify-between px-6 py-4 border-b border-[#ff007f]/20 bg-[#0d0e15]/80 backdrop-blur-md md:px-16">
+      <nav className="sticky top-0 z-50 flex items-center justify-between gap-4 px-6 py-4 border-b border-white/10 bg-[#090b12]/80 backdrop-blur-xl shadow-soft md:px-16">
         <div 
-          className="font-mono text-xl font-bold tracking-wider text-[#00f0ff] [text-shadow:0_0_10px_#00f0ff] cursor-pointer"
+          className="font-mono text-xl font-bold tracking-[0.24em] text-[#7dd3fc] drop-shadow-[0_0_12px_rgba(70,243,255,0.4)] cursor-pointer transition hover:text-[#46f3ff]"
           onMouseEnter={handleLogoHover}
         >
           {logoText}
         </div>
-        <ul className="hidden space-x-8 font-bold md:flex">
-          <li><a href="#about" className="hover:text-[#ff007f] transition [text-shadow:hover:0_0_8px_#ff007f]">/About</a></li>
-          <li><a href="#projects" className="hover:text-[#ff007f] transition [text-shadow:hover:0_0_8px_#ff007f]">/Projects</a></li>
-          <li><a href="#contact" className="hover:text-[#ff007f] transition [text-shadow:hover:0_0_8px_#ff007f]">/Contact</a></li>
+        <ul className="hidden items-center space-x-8 text-sm font-semibold uppercase tracking-[0.2em] text-[#cbd5e1] md:flex">
+          <li><a href="#about" className="transition hover:text-[#ff4fd8]">/about</a></li>
+          <li><a href="#projects" className="transition hover:text-[#ff4fd8]">/projects</a></li>
+          <li><a href="#contact" className="transition hover:text-[#ff4fd8]">/contact</a></li>
         </ul>
         <button 
           onClick={toggleBgm}
@@ -91,38 +96,40 @@ export default function Home() {
       </nav>
 
       {/* HERO SECTION */}
-      <header id="about" className="flex flex-col-reverse items-center justify-between px-6 py-16 min-h-[85vh] md:flex-row md:px-16 gap-12">
+      <header id="about" className="flex flex-col-reverse items-center justify-between px-6 py-16 min-h-[85vh] md:flex-row md:px-16 gap-12 sm:gap-16">
         <div className="max-w-2xl">
-          <span className="inline-block px-3 py-1 text-xs font-bold tracking-widest text-[#00f0ff] uppercase bg-[#00f0ff]/10 border-l-4 border-[#00f0ff]">
-            🚀 SYSTEM: READY
+          <span className="inline-flex items-center gap-2 rounded-full border border-[#46f3ff]/20 bg-[#46f3ff]/10 px-4 py-2 text-xs font-semibold uppercase tracking-[0.28em] text-[#46f3ff] shadow-[0_0_24px_rgba(70,243,255,0.12)]">
+            🚀 SYSTEM READY
           </span>
-          <h1 className="relative my-4 font-mono text-5xl font-extrabold tracking-tight md:text-7xl text-white">
-            TAKESHI
+          <h1 className="relative my-6 font-display text-5xl font-extrabold tracking-tight text-white md:text-7xl">
+            TAKE<span className="text-[#7dd3fc]">SHI</span>
           </h1>
-          <p className="text-xl md:text-2xl mb-4 font-light">
-            Software engineer building tools, communities, and simple web experiences.
+          <p className="text-xl md:text-2xl mb-4 max-w-xl leading-snug text-[#d1d9e6]/90">
+            Software engineer building refined tooling, community operations, and sleek web experiences.
           </p>
-          <p className="text-[#a0aec0] leading-relaxed mb-8">
-            "Spring will be here soon. Spring, the season I met you, is coming. A Spring without you…is coming." - <span className="italic text-xs text-[#00f0ff]">Kousei Arima</span>
+          <p className="text-[#a0aec0] leading-relaxed mb-8 max-w-2xl">
+            "Spring will be here soon. Spring, the season I met you, is coming. A Spring without you…is coming." - <span className="italic text-[#7dd3fc]">Kousei Arima</span>
           </p>
-          <div className="flex gap-4">
-            <a href="#projects" className="px-6 py-3 font-bold text-white transition bg-[#ff007f] rounded shadow-[0_0_15px_rgba(255,0,127,0.4)] hover:shadow-[0_0_25px_#ff007f] hover:-translate-y-0.5">
+          <div className="flex flex-wrap gap-4">
+            <a href="#projects" className="inline-flex items-center justify-center rounded-full bg-[#ff4fd8] px-6 py-3 text-sm font-semibold text-white shadow-glow transition duration-200 hover:-translate-y-1 hover:bg-[#ff70b5]">
               View Projects
             </a>
-            <a href="#contact" className="px-6 py-3 font-bold transition border rounded border-[#00f0ff] text-[#00f0ff] hover:bg-[#00f0ff]/10 hover:-translate-y-0.5">
+            <a href="#contact" className="inline-flex items-center justify-center rounded-full border border-[#7dd3fc]/20 bg-[#0f172a]/80 px-6 py-3 text-sm font-semibold text-[#7dd3fc] transition duration-200 hover:border-[#7dd3fc] hover:bg-[#7dd3fc]/10">
               Contact Me
             </a>
           </div>
         </div>
         
         {/* Avatar frame */}
-        <div className="w-64 h-64 md:w-80 md:h-80 relative group">
-          <div className="w-full h-full overflow-hidden border-4 border-[#00f0ff] rounded-2xl shadow-[0_0_30px_rgba(0,240,255,0.3)] rotate-3 group-hover:rotate-0 group-hover:scale-105 group-hover:border-[#ff007f] group-hover:shadow-[0_0_35px_#ff007f] transition-all duration-500">
-              <img
+        <div className="w-64 h-64 md:w-80 md:h-80 relative animate-float transition-transform duration-700 hover:-translate-y-2">
+          <div className="absolute inset-0 rounded-3xl border border-[#46f3ff]/10 bg-[#ffffff08] shadow-[0_0_45px_rgba(70,243,255,0.12)] blur-2xl" />
+          <div className="relative h-full overflow-hidden rounded-[2rem] border border-[#46f3ff]/20 bg-gradient-to-br from-[#111827] via-[#0f172a] to-[#090b12] shadow-soft">
+            <img
               src="/hero-anime.jpg"
               alt="Profile avatar"
               className="object-cover w-full h-full"
             />
+            <div className="pointer-events-none absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-[#07070b]/95 via-transparent to-transparent" />
           </div>
         </div>
       </header>
@@ -131,14 +138,19 @@ export default function Home() {
       <section id="projects" className="px-6 py-20 md:px-16">
         <div className="flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
           <div>
-            <h2 className="font-mono text-2xl font-bold text-[#00f0ff]">{"// SELECTED PROJECTS"}</h2>
-            <p className="mt-3 max-w-2xl text-sm text-[#a0aec0]">
-              Click a project to expand details. Active work shows live evidence links, archived work is grouped into one reference card.
+            <p className="text-xs font-semibold uppercase tracking-[0.32em] text-[#7dd3fc]">
+              selected projects
+            </p>
+            <h2 className="mt-4 font-display text-4xl font-bold tracking-tight text-white sm:text-5xl">
+              Featured work
+            </h2>
+            <p className="mt-4 max-w-2xl text-sm leading-relaxed text-[#c9d2e5]/90">
+              Expand each section to see exact community work, live evidence links, and archived projects.
             </p>
           </div>
         </div>
 
-        <div className="mt-8 space-y-4">
+        <div className="mt-10 space-y-5">
           {projects.map((project) => {
             const isOpen = openProjectId === project.id;
 
@@ -150,7 +162,7 @@ export default function Home() {
                 <button
                   type="button"
                   onClick={() => setOpenProjectId(isOpen ? null : project.id)}
-                  className="flex w-full items-center justify-between gap-4 px-6 py-5 text-left transition-all hover:bg-white/5"
+                  className="group flex w-full items-center justify-between gap-4 px-6 py-5 text-left transition-all duration-300 hover:bg-white/5"
                 >
                   <div>
                     <div className="flex flex-wrap items-center gap-3">
@@ -176,17 +188,17 @@ export default function Home() {
                     isOpen ? "max-h-[900px] py-5 opacity-100" : "max-h-0 py-0 opacity-0"
                   }`}
                 >
-                  <p className="text-sm leading-relaxed text-[#a0aec0]">{project.description}</p>
+                  <p className="text-sm leading-relaxed text-[#c9d2e5]">{project.description}</p>
                   {project.items ? (
                     <div className="mt-5 space-y-5">
                       {project.items.map((item) => (
-                        <div key={item.label} className="rounded-3xl border border-white/10 bg-[#111827] p-4">
-                          <div className="flex items-center justify-between gap-4">
+                        <div key={item.label} className="rounded-3xl border border-white/10 bg-[#111827] p-4 shadow-soft transition duration-300 hover:-translate-y-1 hover:border-[#7dd3fc]/20">
+                          <div className="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
                             <div>
                               <h4 className="text-base font-semibold text-white">{item.label}</h4>
-                              <p className="mt-2 text-sm text-[#cbd5e1]">{item.description}</p>
+                              <p className="mt-2 text-sm text-[#c9d2e5]/90">{item.description}</p>
                             </div>
-                            <span className="rounded-full bg-[#0f172a] px-3 py-1 text-xs uppercase tracking-[0.2em] text-[#7dd3fc]">
+                            <span className="inline-flex rounded-full bg-[#1f2937]/90 px-3 py-1 text-xs uppercase tracking-[0.2em] text-[#7dd3fc]">
                               {item.links.length} links
                             </span>
                           </div>
@@ -197,7 +209,7 @@ export default function Home() {
                                 href={link.href}
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className="rounded-2xl border border-[#ffffff1a] bg-white/5 px-4 py-2 text-sm text-[#cbd5e1] transition duration-200 hover:-translate-y-0.5 hover:bg-[#1f2937] hover:text-white"
+                                className="rounded-2xl border border-[#ffffff1a] bg-[#0f172a]/90 px-4 py-2 text-sm text-[#cbd5e1] transition duration-200 hover:-translate-y-0.5 hover:border-[#7dd3fc]/40 hover:bg-[#151d2f] hover:text-white"
                               >
                                 {link.label}
                               </a>
@@ -230,15 +242,15 @@ export default function Home() {
       {/* CONTACT SECTION */}
       <footer id="contact" className="text-center py-16 px-6 bg-[#090a0f] border-t border-[#00f0ff]/10">
         <h2 className="font-mono text-2xl text-[#ff007f] mb-4">{"// CONTACT"}</h2>
-        <p className="text-[#a0aec0] max-w-md mx-auto mb-8">Contact me on Discord or GitHub for project inquiries and collaboration.</p>
-        <div className="flex flex-col items-center gap-4 sm:flex-row sm:justify-center">
-          <a href="https://discord.com/users/645512630244605983" target="_blank" rel="noopener noreferrer" className="px-5 py-2.5 font-bold border border-neutral-800 rounded-md hover:border-[#00f0ff] hover:text-[#00f0ff] hover:shadow-[0_0_15px_rgba(0,240,255,0.2)] transition">
+        <p className="text-[#c9d2e5]/80 max-w-md mx-auto mb-8">Reach out on Discord or GitHub for project work, moderation questions, or collaboration.</p>
+        <div className="grid gap-4 sm:grid-cols-3">
+          <a href="https://discord.com/users/645512630244605983" target="_blank" rel="noopener noreferrer" className="rounded-3xl border border-[#7dd3fc]/20 bg-[#0d1220]/90 px-5 py-4 text-sm font-semibold text-[#c9d2e5] transition duration-200 hover:-translate-y-0.5 hover:border-[#7dd3fc]/50 hover:bg-[#121827] hover:text-white shadow-soft">
             Discord: vntakeshii
           </a>
-          <a href="http://github.com/VNTakeshi29/" target="_blank" rel="noopener noreferrer" className="px-5 py-2.5 font-bold border border-neutral-800 rounded-md hover:border-[#00f0ff] hover:text-[#00f0ff] hover:shadow-[0_0_15px_rgba(0,240,255,0.2)] transition">
+          <a href="http://github.com/VNTakeshi29/" target="_blank" rel="noopener noreferrer" className="rounded-3xl border border-[#7dd3fc]/20 bg-[#0d1220]/90 px-5 py-4 text-sm font-semibold text-[#c9d2e5] transition duration-200 hover:-translate-y-0.5 hover:border-[#7dd3fc]/50 hover:bg-[#121827] hover:text-white shadow-soft">
             GitHub
           </a>
-          <a href="https://guns.lol/vntakeshi" target="_blank" rel="noopener noreferrer" className="px-5 py-2.5 font-bold border border-neutral-800 rounded-md hover:border-[#00f0ff] hover:text-[#00f0ff] hover:shadow-[0_0_15px_rgba(0,240,255,0.2)] transition">
+          <a href="https://guns.lol/vntakeshi" target="_blank" rel="noopener noreferrer" className="rounded-3xl border border-[#7dd3fc]/20 bg-[#0d1220]/90 px-5 py-4 text-sm font-semibold text-[#c9d2e5] transition duration-200 hover:-translate-y-0.5 hover:border-[#7dd3fc]/50 hover:bg-[#121827] hover:text-white shadow-soft">
             guns.lol/vntakeshi
           </a>
         </div>

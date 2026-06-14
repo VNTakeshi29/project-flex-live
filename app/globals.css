@@ -47,7 +47,8 @@ html.mood-morning .glass {
 }
 
 body {
-  background-color: #ffffff;
+  background-color: #07070b;
+  color: #dce4f1;
 }
 
 html.dark body {
