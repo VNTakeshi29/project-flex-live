@@ -12,6 +12,7 @@ export type Project = {
   status: ProjectStatus;
   badges: string[];
   description: string;
+  details?: string[];
   links: ProjectLink[];
 };
 
@@ -23,37 +24,21 @@ export const projects: Project[] = [
     status: "active",
     badges: ["Active", "Discord", "YouTube"],
     description:
-      "Moderation and support for NightOwlTGT and Bis communities, plus active Discord engagement.",
+      "Moderation and support for NightOwlTGT, Bis, and DTPuu communities with active Discord operations.",
+    details: [
+      "NightOwlTGT: Discord admin and moderation for Play Together tools community.",
+      "Bis: Community moderation and event support for streamer audience.",
+      "DTPuu: Moderator support for YouTube community engagement and Discord message handling.",
+      "Live evidence across active channels and Discord access."
+    ],
     links: [
-      { label: "NightOwlTGT", href: "https://www.youtube.com/@NightOwlTGT" },
-      { label: "Bis", href: "https://www.youtube.com/@Bis1001" },
-      { label: "Discord", href: "https://discord.gg/Svz59wgfhj" }
+      { label: "NightOwlTGT YouTube", href: "https://www.youtube.com/@NightOwlTGT" },
+      { label: "Bis YouTube", href: "https://www.youtube.com/@Bis1001" },
+      { label: "DTPuu YouTube", href: "https://www.youtube.com/@DTPuu" },
+      { label: "Discord servers", href: "https://discord.gg/Svz59wgfhj" }
     ]
   },
-  {
-    id: "dtpuu-mod",
-    title: "DTPuu Mod Support",
-    role: "Moderator",
-    status: "active",
-    badges: ["Active", "YouTube", "Mod"],
-    description:
-      "Active moderation support for DTPuu’s YouTube community and audience engagement.",
-    links: [
-      { label: "YouTube", href: "https://www.youtube.com/@DTPuu" }
-    ]
-  },
-  {
-    id: "personal-server",
-    title: "Takeshi Discord Hub",
-    role: "Owner",
-    status: "active",
-    badges: ["Active", "Discord"],
-    description:
-      "Private server for collaboration, project coordination, and community support.",
-    links: [
-      { label: "Discord", href: "https://discord.com/users/645512630244605983" }
-    ]
-  },
+
   {
     id: "legacy-projects",
     title: "Legacy / Archived Projects",

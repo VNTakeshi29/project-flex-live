@@ -177,6 +177,13 @@ export default function Home() {
                   }`}
                 >
                   <p className="text-sm leading-relaxed text-[#a0aec0]">{project.description}</p>
+                  {project.details ? (
+                    <ul className="mt-4 space-y-3 text-sm text-[#cbd5e1] list-disc list-inside">
+                      {project.details.map((detail) => (
+                        <li key={detail}>{detail}</li>
+                      ))}
+                    </ul>
+                  ) : null}
                   <div className="mt-4 flex flex-wrap gap-3">
                     {project.links.map((link) => (
                       <a
