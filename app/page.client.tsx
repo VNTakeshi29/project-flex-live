@@ -82,7 +82,7 @@ export default function Home() {
       <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top,_rgba(70,243,255,0.08),transparent_30%),radial-gradient(circle_at_bottom_left,_rgba(255,79,216,0.05),transparent_25%)] opacity-70" />
 
       {/* Background BGM Track */}
-      <audio ref={audioRef} loop src="/music.mp3" />
+      <audio ref={audioRef} autoPlay loop playsInline src="/music.mp3" />
 
       {/* NAVBAR */}
       <nav className="sticky top-0 z-50 flex items-center justify-between gap-4 px-6 py-4 border-b border-white/10 bg-[#090b12]/80 backdrop-blur-xl shadow-soft md:px-16">
