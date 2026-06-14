@@ -4,7 +4,6 @@ import { projects } from "@/lib/projects";
 
 export default function Home() {
   const [bgmActive, setBgmActive] = useState(false);
-  const [autoplayBlocked, setAutoplayBlocked] = useState(false);
   const [logoText, setLogoText] = useState("TAKESHI.exe");
   const [openProjectId, setOpenProjectId] = useState<string | null>(null);
   const intervalRef = useRef<number | null>(null);
@@ -45,17 +44,13 @@ export default function Home() {
 
     if (bgmActive) {
       audio.pause();
-      audio.muted = true;
       setBgmActive(false);
     } else {
       audio.volume = 0.3;
-      audio.muted = false;
       audio.play().then(() => {
         setBgmActive(true);
-        setAutoplayBlocked(false);
       }).catch(() => {
         console.warn("Audio play blocked by browser");
-        setAutoplayBlocked(true);
       });
     }
   };
@@ -65,12 +60,6 @@ export default function Home() {
     if (!audio) return;
 
     audio.volume = 0.3;
-    audio.muted = true;
-    audio.play().then(() => {
-      setBgmActive(false);
-    }).catch(() => {
-      setAutoplayBlocked(true);
-    });
 
     return () => {
       if (intervalRef.current !== null) {
@@ -88,7 +77,7 @@ export default function Home() {
       <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top,_rgba(70,243,255,0.08),transparent_30%),radial-gradient(circle_at_bottom_left,_rgba(255,79,216,0.05),transparent_25%)] opacity-70" />
 
       {/* Background BGM Track */}
-      <audio ref={audioRef} autoPlay muted loop playsInline src="/music.mp3" />
+      <audio ref={audioRef} loop playsInline src="/music.mp3" />
 
       {/* NAVBAR */}
       <nav className="sticky top-0 z-50 flex items-center justify-between gap-4 px-6 py-4 border-b border-white/10 bg-[#090b12]/80 backdrop-blur-xl shadow-soft md:px-16">
@@ -103,17 +92,12 @@ export default function Home() {
           <li><a href="#projects" className="transition hover:text-[#ff4fd8]">/projects</a></li>
           <li><a href="#contact" className="transition hover:text-[#ff4fd8]">/contact</a></li>
         </ul>
-        <div className="flex flex-col items-end gap-2">
-          <button 
-            onClick={toggleBgm}
-            className={`px-4 py-2 font-bold transition-all border rounded border-[#ff007f] text-[#ff007f] hover:bg-[#ff007f] hover:text-white ${bgmActive ? 'bg-[#ff007f] text-white shadow-[0_0_15px_#ff007f]' : ''}`}
-          >
-            {bgmActive ? "🎵 BGM: ON" : "🔇 BGM: OFF"}
-          </button>
-          {autoplayBlocked ? (
-            <p className="text-xs text-[#c9d2e5]">Autoplay bị chặn, nhấn nút để bật nhạc.</p>
-          ) : null}
-        </div>
+        <button 
+          onClick={toggleBgm}
+          className={`px-4 py-2 font-bold transition-all border rounded border-[#ff007f] text-[#ff007f] hover:bg-[#ff007f] hover:text-white ${bgmActive ? 'bg-[#ff007f] text-white shadow-[0_0_15px_#ff007f]' : ''}`}
+        >
+          {bgmActive ? "🎵 BGM: ON" : "🔇 BGM: OFF"}
+        </button>
       </nav>
 
       {/* HERO SECTION */}
