@@ -5,6 +5,12 @@ export type ProjectLink = {
   href: string;
 };
 
+export type ProjectItem = {
+  label: string;
+  description: string;
+  links: ProjectLink[];
+};
+
 export type Project = {
   id: string;
   title: string;
@@ -12,7 +18,7 @@ export type Project = {
   status: ProjectStatus;
   badges: string[];
   description: string;
-  details?: string[];
+  items?: ProjectItem[];
   links: ProjectLink[];
 };
 
@@ -25,32 +31,76 @@ export const projects: Project[] = [
     badges: ["Active", "Discord", "YouTube"],
     description:
       "Moderation and support for NightOwlTGT, Bis, and DTPuu communities with active Discord operations.",
-    details: [
-      "NightOwlTGT: Discord admin and moderation for Play Together tools community.",
-      "Bis: Community moderation and event support for streamer audience.",
-      "DTPuu: Moderator support for YouTube community engagement and Discord message handling.",
-      "Live evidence across active channels and Discord access."
+    items: [
+      {
+        label: "NightOwlTGT",
+        description: "Admin and moderation for Play Together tools community on YouTube and Discord.",
+        links: [
+          { label: "YouTube", href: "https://www.youtube.com/@NightOwlTGT" },
+          { label: "Discord", href: "https://discord.gg/Svz59wgfhj" }
+        ]
+      },
+      {
+        label: "Bis",
+        description: "Community moderator for Bis’ streamer Discord server and event support.",
+        links: [
+          { label: "YouTube", href: "https://www.youtube.com/@Bis1001" },
+          { label: "Discord", href: "https://discord.gg/Svz59wgfhj" }
+        ]
+      },
+      {
+        label: "DTPuu",
+        description: "Moderator support for DTPuu’s YouTube audience and Discord engagement.",
+        links: [
+          { label: "YouTube", href: "https://www.youtube.com/@DTPuu" }
+        ]
+      }
     ],
     links: [
-      { label: "NightOwlTGT YouTube", href: "https://www.youtube.com/@NightOwlTGT" },
-      { label: "Bis YouTube", href: "https://www.youtube.com/@Bis1001" },
-      { label: "DTPuu YouTube", href: "https://www.youtube.com/@DTPuu" },
-      { label: "Discord servers", href: "https://discord.gg/Svz59wgfhj" }
+      { label: "Community overview", href: "https://discord.gg/Svz59wgfhj" }
     ]
   },
-
   {
     id: "legacy-projects",
     title: "Legacy / Archived Projects",
     status: "archived",
     badges: ["Archived"],
     description:
-      "All inactive past projects grouped together for reference, including archived servers and services.",
+      "Archived private servers and service projects grouped for reference.",
+    items: [
+      {
+        label: "Ngọc Rồng",
+        description: "Dragon Ball private server network, now archived.",
+        links: [
+          { label: "ngocrongzin.com", href: "https://ngocrongzin.com" },
+          { label: "ngocrongzee.com", href: "https://ngocrongzee.com" }
+        ]
+      },
+      {
+        label: "Minecraft",
+        description: "Archived private Minecraft community servers.",
+        links: [
+          { label: "seacraft.vn", href: "https://seacraft.vn" },
+          { label: "mineocd.com", href: "https://mineocd.com" }
+        ]
+      },
+      {
+        label: "Muahack",
+        description: "Offline cheat marketplace site that is now archived.",
+        links: [
+          { label: "muahack.com", href: "https://muahack.com" }
+        ]
+      },
+      {
+        label: "Mars Services",
+        description: "Archived trading project with historical Discord reference.",
+        links: [
+          { label: "Discord", href: "https://discord.gg/BW9qD66m5p" }
+        ]
+      }
+    ],
     links: [
-      { label: "Ngọc Rồng", href: "https://ngocrongzin.com" },
-      { label: "Minecraft", href: "https://seacraft.vn" },
-      { label: "muahack.com", href: "https://muahack.com" },
-      { label: "Mars Services", href: "https://discord.gg/BW9qD66m5p" }
+      { label: "Archive overview", href: "https://github.com/VNTakeshi29/project-flex-live" }
     ]
   }
 ];
